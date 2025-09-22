@@ -1,0 +1,63 @@
+Mon, 22 Sep 2025 18:05:43 WARNING  IPv4 [0.0.0.0] can't be dualstack
+Mon, 22 Sep 2025 18:05:43 INFO     TCP server listening at 0.0.0.0 on port 1688
+Mon, 22 Sep 2025 18:05:43 INFO     HWID: 35588111320F485A
+Mon, 22 Sep 2025 18:10:20 WARNING  IPv4 [0.0.0.0] can't be dualstack
+Mon, 22 Sep 2025 18:10:20 INFO     TCP server listening at 0.0.0.0 on port 1688
+Mon, 22 Sep 2025 18:10:20 INFO     HWID: 0A34F4D921074184
+Mon, 22 Sep 2025 18:10:21 INFO     Connection accepted: 172.31.81.130:43570
+Mon, 22 Sep 2025 18:10:21 ERROR    Invalid RPC request type 84.
+Mon, 22 Sep 2025 18:10:21 INFO     Connection closed: 172.31.81.130:43570
+Mon, 22 Sep 2025 18:10:21 INFO     Connection accepted: 172.31.81.130:43586
+Mon, 22 Sep 2025 18:10:21 ERROR    Invalid RPC request type 84.
+Mon, 22 Sep 2025 18:10:21 INFO     Connection closed: 172.31.81.130:43586
+Mon, 22 Sep 2025 18:10:21 INFO     Connection accepted: 172.31.81.130:43588
+Mon, 22 Sep 2025 18:10:21 ERROR    Invalid RPC request type 84.
+Mon, 22 Sep 2025 18:10:21 INFO     Connection closed: 172.31.81.130:43588
+Mon, 22 Sep 2025 18:10:21 INFO     Connection accepted: 172.31.81.130:43600
+Mon, 22 Sep 2025 18:10:21 ERROR    Invalid RPC request type 84.
+Mon, 22 Sep 2025 18:10:21 INFO     Connection closed: 172.31.81.130:43600
+Mon, 22 Sep 2025 18:13:06 WARNING  IPv4 [0.0.0.0] can't be dualstack
+Mon, 22 Sep 2025 18:13:06 INFO     TCP server listening at 0.0.0.0 on port 1688
+Mon, 22 Sep 2025 18:13:06 INFO     HWID: 906A1C9CCED34C7A
+Mon, 22 Sep 2025 18:13:07 INFO     Connection accepted: 172.31.81.130:51974
+Mon, 22 Sep 2025 18:13:07 ERROR    Invalid RPC request type 84.
+Mon, 22 Sep 2025 18:13:07 INFO     Connection closed: 172.31.81.130:51974
+Mon, 22 Sep 2025 18:13:07 INFO     Connection accepted: 172.31.81.130:51982
+Mon, 22 Sep 2025 18:13:07 ERROR    Invalid RPC request type 84.
+Mon, 22 Sep 2025 18:13:07 INFO     Connection closed: 172.31.81.130:51982
+Mon, 22 Sep 2025 18:13:07 INFO     Connection accepted: 172.31.81.130:51986
+Mon, 22 Sep 2025 18:13:07 ERROR    Invalid RPC request type 84.
+Mon, 22 Sep 2025 18:13:07 INFO     Connection closed: 172.31.81.130:51986
+Mon, 22 Sep 2025 18:13:07 INFO     Connection accepted: 172.31.81.130:51990
+Mon, 22 Sep 2025 18:13:07 ERROR    Invalid RPC request type 84.
+Mon, 22 Sep 2025 18:13:07 INFO     Connection closed: 172.31.81.130:51990
+Mon, 22 Sep 2025 18:37:02 WARNING  IPv4 [0.0.0.0] can't be dualstack
+Mon, 22 Sep 2025 18:37:02 INFO     TCP server listening at 0.0.0.0 on port 1688
+Mon, 22 Sep 2025 18:37:02 INFO     HWID: D8E1A7D948D246E6
+Mon, 22 Sep 2025 18:37:03 INFO     Connection accepted: 172.31.81.130:44392
+Mon, 22 Sep 2025 18:37:03 ERROR    Invalid RPC request type 84.
+Mon, 22 Sep 2025 18:37:03 INFO     Connection closed: 172.31.81.130:44392
+Mon, 22 Sep 2025 18:37:03 INFO     Connection accepted: 172.31.81.130:44396
+Mon, 22 Sep 2025 18:37:03 ERROR    Invalid RPC request type 84.
+Mon, 22 Sep 2025 18:37:03 INFO     Connection closed: 172.31.81.130:44396
+Mon, 22 Sep 2025 18:37:03 INFO     Connection accepted: 172.31.81.130:44398
+Mon, 22 Sep 2025 18:37:03 ERROR    Invalid RPC request type 84.
+Mon, 22 Sep 2025 18:37:03 INFO     Connection closed: 172.31.81.130:44398
+Mon, 22 Sep 2025 18:37:03 INFO     Connection accepted: 172.31.81.130:44412
+Mon, 22 Sep 2025 18:37:03 ERROR    Invalid RPC request type 84.
+Mon, 22 Sep 2025 18:37:03 INFO     Connection closed: 172.31.81.130:44412
+Mon, 22 Sep 2025 18:47:02 WARNING  IPv4 [0.0.0.0] can't be dualstack
+Mon, 22 Sep 2025 18:47:02 INFO     TCP server listening at 0.0.0.0 on port 1688
+Mon, 22 Sep 2025 18:47:02 INFO     HWID: BEFA21E69B194CCC
+Mon, 22 Sep 2025 18:47:03 INFO     Connection accepted: 172.31.103.226:47382
+Mon, 22 Sep 2025 18:47:03 ERROR    Invalid RPC request type 84.
+Mon, 22 Sep 2025 18:47:03 INFO     Connection closed: 172.31.103.226:47382
+Mon, 22 Sep 2025 18:47:03 INFO     Connection accepted: 172.31.103.226:47398
+Mon, 22 Sep 2025 18:47:03 ERROR    Invalid RPC request type 84.
+Mon, 22 Sep 2025 18:47:03 INFO     Connection closed: 172.31.103.226:47398
+Mon, 22 Sep 2025 18:47:03 INFO     Connection accepted: 172.31.103.226:47414
+Mon, 22 Sep 2025 18:47:03 ERROR    Invalid RPC request type 84.
+Mon, 22 Sep 2025 18:47:03 INFO     Connection closed: 172.31.103.226:47414
+Mon, 22 Sep 2025 18:47:03 INFO     Connection accepted: 172.31.103.226:47416
+Mon, 22 Sep 2025 18:47:03 ERROR    Invalid RPC request type 84.
+Mon, 22 Sep 2025 18:47:03 INFO     Connection closed: 172.31.103.226:47416

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Py-KMS Server & WebUI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.min.css') }}">
+    <style>
+        .server-status { margin: 1rem 0; }
+        .product-card { margin: 1rem 0; cursor: pointer; transition: all 0.3s ease; }
+        .product-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .product-header { display: flex; justify-content: space-between; align-items: center; }
+        .expand-icon { transition: transform 0.3s ease; }
+        .expanded .expand-icon { transform: rotate(180deg); }
+        .commands-section { display: none; margin-top: 1rem; }
+        .commands-section.show { display: block; }
+        .command-box { background: #f5f5f5; padding: 1rem; border-radius: 5px; margin: 0.5rem 0; position: relative; }
+        .command-text { background: #fff; padding: 0.5rem; border-radius: 3px; border: 1px solid #ddd; margin: 0.5rem 0; font-family: monospace; word-break: break-all; }
+        .copy-button { position: absolute; top: 0.5rem; right: 0.5rem; }
+        .log-container { background: #000; color: #00ff00; padding: 1rem; height: 300px; overflow-y: scroll; font-family: monospace; }
+        .highlight-ip { background: yellow; font-weight: bold; }
+        .gvlk-key { background: #fff; padding: 0.5rem; border-radius: 3px; border: 1px solid #ddd; font-family: monospace; display: inline-block; position: relative; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="section">
+            <h1 class="title">Py-KMS Server & WebUI</h1>
+            
+            <!-- Server Status -->
+            <div class="box server-status">
+                <h2 class="subtitle">Server Status</h2>
+                <p><strong>IP Address:</strong> <span class="highlight-ip">{{ server_config.ip }}</span></p>
+                <p><strong>Port:</strong> {{ server_config.port }}</p>
+                <p><strong>Status:</strong> 
+                    <span class="tag is-success">{{ server_config.status.title() }}</span>
+                </p>
+                
+                <div class="field is-grouped">
+                    <div class="control">
+                        <input class="input" type="text" id="server-ip" placeholder="Server IP" value="{{ server_config.ip }}">
+                    </div>
+                    <div class="control">
+                        <input class="input" type="text" id="server-port" placeholder="Port" value="{{ server_config.port }}">
+                    </div>
+                    <div class="control">
+                        <button class="button is-primary" onclick="updateServerConfig()">Update</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- KMS Products -->
+            <div class="box">
+                <h2 class="subtitle">KMS Products ({{ products|length }} available)</h2>
+                <p class="help">Click on a product to view activation commands</p>
+                {% for product_name, product_data in products.items() %}
+                <div class="card product-card" onclick="toggleCommands('{{ loop.index }}')">
+                    <div class="card-content">
+                        <div class="product-header">
+                            <div>
+                                <h3 class="title is-5">{{ product_name }}</h3>
+                                <p><strong>GVLK Key:</strong> 
+                                    <span class="gvlk-key" id="gvlk-{{ loop.index }}">{{ product_data.gvlk }}</span>
+                                    <button class="button is-small is-text copy-button" onclick="event.stopPropagation(); copyToClipboard('gvlk-{{ loop.index }}', this)" title="Copy GVLK Key">📋</button>
+                                </p>
+                            </div>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        
+                        <div class="commands-section" id="commands-{{ loop.index }}">
+                            <h4 class="subtitle is-6">Activation Commands:</h4>
+                            
+                            <div class="command-box">
+                                <button class="button is-small is-light copy-button" onclick="event.stopPropagation(); copyToClipboard('cmd1-{{ loop.index }}', this)" title="Copy Command">📋</button>
+                                <p><strong>1. Install GVLK Key:</strong></p>
+                                <div class="command-text" id="cmd1-{{ loop.index }}">{{ product_data.commands.install_key }}</div>
+                                <button class="button is-small is-info" onclick="event.stopPropagation(); executeCommand('{{ product_data.commands.install_key }}', '{{ product_name }}')">Execute</button>
+                            </div>
+                            
+                            <div class="command-box">
+                                <button class="button is-small is-light copy-button" onclick="event.stopPropagation(); copyToClipboard('cmd2-{{ loop.index }}', this)" title="Copy Command">📋</button>
+                                <p><strong>2. Set KMS Server:</strong></p>
+                                <div class="command-text" id="cmd2-{{ loop.index }}">{{ product_data.commands.set_kms_server }}</div>
+                                <button class="button is-small is-info" onclick="event.stopPropagation(); executeCommand('{{ product_data.commands.set_kms_server }}', '{{ product_name }}')">Execute</button>
+                            </div>
+                            
+                            <div class="command-box">
+                                <button class="button is-small is-light copy-button" onclick="event.stopPropagation(); copyToClipboard('cmd3-{{ loop.index }}', this)" title="Copy Command">📋</button>
+                                <p><strong>3. Activate Windows:</strong></p>
+                                <div class="command-text" id="cmd3-{{ loop.index }}">{{ product_data.commands.activate }}</div>
+                                <button class="button is-small is-info" onclick="event.stopPropagation(); executeCommand('{{ product_data.commands.activate }}', '{{ product_name }}')">Execute</button>
+                            </div>
+                            
+                            <div class="command-box">
+                                <button class="button is-small is-light copy-button" onclick="event.stopPropagation(); copyToClipboard('cmd4-{{ loop.index }}', this)" title="Copy Command">📋</button>
+                                <p><strong>4. Check Status:</strong></p>
+                                <div class="command-text" id="cmd4-{{ loop.index }}">{{ product_data.commands.check_status }}</div>
+                                <button class="button is-small is-info" onclick="event.stopPropagation(); executeCommand('{{ product_data.commands.check_status }}', '{{ product_name }}')">Execute</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Live Logs -->
+            <div class="box">
+                <h2 class="subtitle">Live Server Logs</h2>
+                <div class="log-container" id="log-container">
+                    {% for log_line in logs %}
+                    <div>{{ log_line|trim }}</div>
+                    {% endfor %}
+                </div>
+                <button class="button is-small" onclick="refreshLogs()">Refresh Logs</button>
+                <button class="button is-small" onclick="toggleAutoRefresh()">Toggle Auto-Refresh</button>
+            </div>
+        </section>
+    </div>
+    
+    <script>
+        let autoRefresh = false;
+        let refreshInterval;
+        
+        function toggleCommands(index) {
+            const commandsSection = document.getElementById('commands-' + index);
+            const card = commandsSection.closest('.product-card');
+            const expandIcon = card.querySelector('.expand-icon');
+            
+            if (commandsSection.classList.contains('show')) {
+                commandsSection.classList.remove('show');
+                card.classList.remove('expanded');
+            } else {
+                // Close all other expanded cards
+                document.querySelectorAll('.commands-section.show').forEach(section => {
+                    section.classList.remove('show');
+                    section.closest('.product-card').classList.remove('expanded');
+                });
+                
+                commandsSection.classList.add('show');
+                card.classList.add('expanded');
+            }
+        }
+        
+        function copyToClipboard(elementId, button) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent || element.innerText;
+            
+            navigator.clipboard.writeText(text).then(function() {
+                // Visual feedback
+                const originalText = button.innerHTML;
+                button.innerHTML = '✓';
+                button.classList.add('is-success');
+                
+                setTimeout(function() {
+                    button.innerHTML = originalText;
+                    button.classList.remove('is-success');
+                }, 2000);
+            }).catch(function(err) {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                // Visual feedback
+                const originalText = button.innerHTML;
+                button.innerHTML = '✓';
+                button.classList.add('is-success');
+                
+                setTimeout(function() {
+                    button.innerHTML = originalText;
+                    button.classList.remove('is-success');
+                }, 2000);
+            });
+        }
+        
+        function updateServerConfig() {
+            const ip = document.getElementById('server-ip').value;
+            const port = document.getElementById('server-port').value;
+            
+            fetch('/api/server/config', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ip: ip, port: port })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Server configuration updated!');
+                location.reload();
+            })
+            .catch(error => alert('Error updating config: ' + error));
+        }
+        
+        function executeCommand(command, product) {
+            fetch('/api/execute_command', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ command: command, product: product })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Command executed: ' + data.result);
+                    refreshLogs();
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            })
+            .catch(error => alert('Error executing command: ' + error));
+        }
+        
+        function refreshLogs() {
+            fetch('/api/logs')
+            .then(response => response.json())
+            .then(logs => {
+                const container = document.getElementById('log-container');
+                container.innerHTML = logs.map(log => '<div>' + log.trim() + '</div>').join('');
+                container.scrollTop = container.scrollHeight;
+            })
+            .catch(error => console.error('Error refreshing logs:', error));
+        }
+        
+        function toggleAutoRefresh() {
+            autoRefresh = !autoRefresh;
+            if (autoRefresh) {
+                refreshInterval = setInterval(refreshLogs, 2000);
+            } else {
+                clearInterval(refreshInterval);
+            }
+        }
+        
+        // Initial log refresh
+        setTimeout(refreshLogs, 1000);
+    </script>
+</body>
+</html>

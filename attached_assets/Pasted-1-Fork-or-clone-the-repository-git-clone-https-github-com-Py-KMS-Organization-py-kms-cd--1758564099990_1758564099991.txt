@@ -1,0 +1,68 @@
+1. Fork or clone the repository:
+   git clone https://github.com/Py-KMS-Organization/py-kms
+   cd py-kms
+
+2. Create a new entry point: `main.py` with the following functionality:
+
+   a) **Dependency Auto-Install**
+      ```python
+      import subprocess
+      import sys
+
+      required_packages = ["flask", "requests"]
+      for pkg in required_packages:
+          try:
+              __import__(pkg)
+          except ImportError:
+              subprocess.check_call([sys.executable, "-m", "pip", "install", pkg])
+      ```
+
+   b) **Start KMS server in background**
+      ```python
+      import subprocess
+
+      server_process = subprocess.Popen(["python", "pykms_server.py"])
+      ```
+
+   c) **Launch Flask WebUI (http://127.0.0.1:5000)**
+      - Show server IP and port (highlight default `0.0.0.0`)
+      - List KMS products (GVLC keys)
+      - For each product, display CMD commands:
+         i) Installing GVLC key
+        ii) Activating Windows via KMS
+       iii) Checking activation status
+      - Display live server logs (auto-update from `pykms_server.py` stdout or a log file `kms_logs.txt`)
+      - Optionally allow changing server IP and port
+      - Save executed commands and activation responses in `kms_logs.txt`
+
+   d) **Optional Enhancements**
+      - Auto-open WebUI in default browser
+      - Validate user input before executing commands
+
+3. **Remove Docker dependencies**
+   - Delete or ignore `Dockerfile` and `docker-compose.yml`
+   - Ensure everything works on Python 3.11 (Windows) without Docker
+
+4. **Test locally**
+   python main.py
+
+5. **Push to your GitHub repository**
+   
+   a) Initialize git (if not already):
+      git init
+      git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+
+   b) Add and commit changes:
+      git add .
+      git commit -m "Standalone Py-KMS with WebUI, logs, auto-install dependencies"
+
+   c) Push to GitHub:
+      git branch -M main
+      git push -u origin main
+
+6. **README.md**
+   - Include instructions:
+      - Running `main.py`
+      - Accessing WebUI
+      - Using product commands
+      - Viewing logs
