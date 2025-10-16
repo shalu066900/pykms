@@ -533,6 +533,9 @@
 			<Activate KmsItem="01000000-0000-0000-0000-000000000000" />
 			<Activate KmsItem="02000000-0000-0000-0000-000000000000" />
 		</CsvlkItem>
+		<CsvlkItem DisplayName="Office 2024" VlmcsdIndex="7" GroupId="206" MinKeyId="611000000" MaxKeyId="630999999" IniFileName="Office2024" EPid="05426-00206-616-384725-03-1033-9200.0000-2602024" Id="f3d89bbf-c0ec-47ce-a8fa-e5a5f97e447f" InvalidWinBuild="[0,1]">
+        	<Activate KmsItem="f3d89bbf-c0ec-47ce-a8fa-e5a5f97e447f" />
+         </CsvlkItem>
 
 		<CsvlkItem DisplayName="Office 2021" VlmcsdIndex="6" GroupId="206" MinKeyId="571000000" MaxKeyId="590999999" IniFileName="Office2021" EPid="05426-00206-586-025264-03-1033-9200.0000-2602021" Id="47f3b983-7c53-4d45-abc6-bcd91e2dd90a" InvalidWinBuild="[0,1]">
 			<Activate KmsItem="86d50b16-4808-41af-b83b-b338274318b2" />
@@ -1012,8 +1015,23 @@
                 <SkuItem DisplayName="Office Visio LTSC Standard 2021" Id="72fce797-1884-48dd-a860-b2f6a5efd3ca" Gvlk="MJVNY-BYWPY-CWV6J-2RKRT-4M8QG" />
                 <SkuItem DisplayName="Office Word LTSC 2021" Id="abe28aea-625a-43b1-8e30-225eb8fbd9e5" Gvlk="TN8H9-M34D3-Y64V9-TR72V-X79KV" />
             </KmsItem>
+			<KmsItem DisplayName="Office 2024" Id="f3d89bbf-c0ec-47ce-a8fa-e5a5f97e447f" IsPreview="false" CanMapToDefaultCsvlk="false" DefaultKmsProtocol="6.0" NCountPolicy="5">
+			    <SkuItem DisplayName="Office LTSC Professional Plus 2024" Id="f3d89bbf-c0ec-47ce-a8fa-e5a5f97e447f" Gvlk="XJ2XN-FW8RK-P4HMP-DKDBV-GCVGB" />
+			    <SkuItem DisplayName="Office LTSC Standard 2024" Id="f3d89bbf-c0ec-47ce-a8fa-e5a5f97e447f" Gvlk="V28N4-JG22K-W66P8-VTMGK-H6HGR" />
+			    <SkuItem DisplayName="Project Professional 2024" Id="f3d89bbf-c0ec-47ce-a8fa-e5a5f97e447f" Gvlk="FQQ23-N4YCY-73HQ3-FM9WC-76HF4" />
+			    <SkuItem DisplayName="Project Standard 2024" Id="f3d89bbf-c0ec-47ce-a8fa-e5a5f97e447f" Gvlk="PD3TT-NTHQQ-VC7CY-MFXK3-G87F8" />
+			    <SkuItem DisplayName="Visio LTSC Professional 2024" Id="f3d89bbf-c0ec-47ce-a8fa-e5a5f97e447f" Gvlk="B7TN8-FJ8V3-7QYCP-HQPMV-YY89G" />
+			    <SkuItem DisplayName="Visio LTSC Standard 2024" Id="f3d89bbf-c0ec-47ce-a8fa-e5a5f97e447f" Gvlk="JMMVY-XFNQC-KK4HK-9H7R3-WQQTV" />
+			    <SkuItem DisplayName="Access LTSC 2024" Id="f3d89bbf-c0ec-47ce-a8fa-e5a5f97e447f" Gvlk="82FTR-NCHR7-W3944-MGRHM-JMCWD" />
+			    <SkuItem DisplayName="Excel LTSC 2024" Id="f3d89bbf-c0ec-47ce-a8fa-e5a5f97e447f" Gvlk="F4DYN-89BP2-WQTWJ-GR8YC-CKGJG" />
+			    <SkuItem DisplayName="Outlook LTSC 2024" Id="f3d89bbf-c0ec-47ce-a8fa-e5a5f97e447f" Gvlk="D2F8D-N3Q3B-J28PV-X27HD-RJWB9" />
+			    <SkuItem DisplayName="PowerPoint LTSC 2024" Id="f3d89bbf-c0ec-47ce-a8fa-e5a5f97e447f" Gvlk="CW94N-K6GJH-9CTXY-MG2VC-FYCWP" />
+			    <SkuItem DisplayName="Skype for Business LTSC 2024" Id="f3d89bbf-c0ec-47ce-a8fa-e5a5f97e447f" Gvlk="4NKHF-9HBQF-Q3B6C-7YV34-F64P3" />
+			    <SkuItem DisplayName="Word LTSC 2024" Id="f3d89bbf-c0ec-47ce-a8fa-e5a5f97e447f" Gvlk="MQ84N-7VYDM-FXV7C-6K7CC-VFW9J" />
+			</KmsItem>
 		</AppItem>
 
 	</AppItems>
 
 </KmsData>
+
