@@ -1028,12 +1028,12 @@
 				<SkuItem DisplayName="Skype for Business LTSC 2024" Id="2k8n3m9o-4l1p-57k2-9m6n-1o5p8k3l7m2n" Gvlk="4NKHF-9HBQF-Q3B6C-7YV34-F64P3" />
 				<SkuItem DisplayName="Word LTSC 2024" Id="3l9o4n0p-5m2q-58l3-0n7o-2p6q9l4m8n3o" Gvlk="MQ84N-7VYDM-FXV7C-6K7CC-VFW9J" />
 			</KmsItem>
-			</KmsItem>
 		</AppItem>
 
 	</AppItems>
 
 </KmsData>
+
 
 
 
